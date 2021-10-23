@@ -3,7 +3,8 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const pageTemplate = require("./src/page-template")
+const generateHtml = require("./src/page-template");
+let teamArr = [];
 /*
 * WHEN the application is started, THEN a prompt to enter the team manager’s name, employee ID, email address, and office number is given
 * WHEN the team manager’s name, employee ID, email address, and office number ar entered, then a menu with the option to add an engineer or an intern or to finish building my team is presented.
@@ -12,7 +13,7 @@ const pageTemplate = require("./src/page-template")
 * WHEN finishing the building of the team, THEN the application is exited, and the HTML is generated
 */
 
-function managerQuestions() {
+function managerGenerator() {
     inquirer
         .prompt([
             {
@@ -21,24 +22,32 @@ function managerQuestions() {
             },
             {
                 message: "What is the team manager's id?",
-                name: "employee id",
+                name: "employee_id",
             },
             {
                 message: "What is the team manager's email?",
-                name: "email address",
+                name: "email_address",
             },
             {
                 message: "What is the team manager's office number?",
-                name: "office number",
+                name: "office_number",
             },
         ])
 
-        .then(response => {
-            addTeamMember();
-        });
+        .then(function(response) {
+            const name = response.name;
+            const id = response.employee_id;
+            const email = response.email_address;
+            const officeNumber = response.office_number;
+            const manager = new Manager(name, id, email, officeNumber)
+
+            teamArr.push(manager);
+            console.log(teamArr);
+            additionalTeamMember();
+        })
 };
 
-function engineerQuestions() {
+function engineerGenerator() {
     inquirer
         .prompt([
             {
@@ -47,24 +56,32 @@ function engineerQuestions() {
             },
             {
                 message: "What is your engineer's id?",
-                name: "employee id",
+                name: "employee_id",
             },
             {
                 message: "What is your engineer's email?",
-                name: "email address",
+                name: "email_address",
             },
             {
                 message: "What is your engineer's GitHub?",
-                name: "github username",
+                name: "github_username",
             },
         ])
 
-        .then(response => {
-            addTeamMember();
-        });
+        .then(function(response) {
+            const name = response.name;
+            const id = response.employee_id;
+            const email = response.email_address;
+            const github = response.github_username;
+            const engineer = new Engineer(name, id, email, github)
+
+            teamArr.push(engineer);
+            console.log(teamArr);
+            additionalTeamMember();
+        })
 };
 
-function internQuestions() {
+function internGenerator() {
     inquirer
         .prompt([
             
@@ -74,11 +91,11 @@ function internQuestions() {
             },
             {
                 message: "What is your intern's id?",
-                name: "employee id",
+                name: "employee_id",
             },
             {
                 message: "What is your intern's email?",
-                name: "email address",
+                name: "email_address",
             },
             {
                 message: "What is your intern's school?",
@@ -86,42 +103,45 @@ function internQuestions() {
             },
         ])
 
-        .then(response => {
-            addTeamMember();
-        });
+        .then(function(response) {
+            const name = response.name;
+            const id = response.employee_id;
+            const email = response.email_address;
+            const school = response.school;
+            const intern = new Intern(name, id, email, school)
+
+            teamArr.push(intern);
+            console.log(teamArr);
+            additionalTeamMember();
+        })
 };
 
-function addTeamMember() {
+function additionalTeamMember() {
     inquirer
         .prompt([
             {
                 type: "list",
-                choices: ["engineer", "intern", "none"],
+                choices: ["Engineer", "Intern", "I don't want to add any more team members"],
                 message: "Which type of team member would you like to add?",
                 name: "team_list",
             },
         ])
 
         .then(response => {
-            console.log(response);
-            if (response.team_list == "engineer") {
-                engineerQuestions();
-            } else if (response.team_list == "intern") {
-                internQuestions();
+            if (response.team_list === "Engineer") {
+                engineerGenerator();
+            } else if (response.team_list === "Intern") {
+                internGenerator();
             } else {
-                return
+                writeToFile("team.html", teamArr);
             }
         });
 };
 
 function writeToFile (fileName, data) {
-    // fs work here
-    // call the page template here
-    // console message to confirm html is generated
+    fs.writeFile(`./assets/${fileName}`, generateHtml(data), (err) => { 
+        err ? console.error(err) : console.log("Generating HTML...")
+    });
 }
 
-function start() {
-    // response answers to be put into html
-}
-
-managerQuestions();
+managerGenerator();

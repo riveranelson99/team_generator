@@ -1,21 +1,4 @@
-// Want to create a html template
-
-function team() {
-
-    function manager() {
-    
-    }
-    
-    function intern () {
-    
-    }
-    
-    function engineer () {
-    
-    }
-}
-
-function generateHtml () {
+function generateHtml (data) {
     let html = 
     `<!DOCTYPE html>
     <html lang="en">
@@ -23,18 +6,16 @@ function generateHtml () {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>${data[0].name}</title>
     </head>
     <body>
         <header>
-            <h1>Hello World</h1>
+            <h1>${data[1].email}</h1>
         </header>
     </body>
     </html>`
-}
 
-function generateCss () {
-
+    return html;
 }
 
 module.exports = generateHtml;
