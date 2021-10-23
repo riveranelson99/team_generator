@@ -1,3 +1,18 @@
+// For each role selected in the array, dynamically generate a card for the selected roles
+// This is to avoid cards being generated in a random manner
+
+function managerCard(role) {
+
+}
+
+function engineerCard(role) {
+
+}
+
+function internCard(role) {
+
+}
+
 function generateHtml (data) {
     let html = 
     `<!DOCTYPE html>

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const { resolve } = require("path");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
@@ -139,9 +140,13 @@ function additionalTeamMember() {
 };
 
 function writeToFile (fileName, data) {
+    // console.log(fileName, data.map(role));
+    // for (i = 0; i < data.length; i++) {
+    //     console.log(data[i].role);
+    // }
     fs.writeFile(`./assets/${fileName}`, generateHtml(data), (err) => { 
         err ? console.error(err) : console.log("Generating HTML...")
     });
-}
+};
 
 managerGenerator();
