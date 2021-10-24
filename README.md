@@ -18,7 +18,11 @@ Developing a generator the creates employee team information.
 
 # Demonstration
 
-![Demo](./assets/team_generator_demo.mp4)
+![Demo](./assets/team_generator_demo-2.gif)
+
+# Video Download
+
+[Team Generator Demo](./assets/team_generator_demo.mp4)
 
 # Screenshots
 
