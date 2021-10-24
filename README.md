@@ -16,21 +16,12 @@ Developing a generator the creates employee team information.
 * WHEN finishing the building of the team, THEN the application is exited, and the HTML is generated
 * The application should use Jest and Inquirer
 
-# Directory Structure
+# Demonstration
 
-It is recommended that you start with a directory structure that looks like the following example:
+![Demo](./assets/team_generator_demo.mp4)
 
-```md
-.
-├── __tests__/             //jest tests
-│   ├── Employee.test.js
-│   ├── Engineer.test.js
-│   ├── Intern.test.js
-│   └── Manager.test.js
-├── dist/                  // rendered output (HTML) and CSS style sheet      
-├── lib/                   // classes
-├── src/                   // template helper code 
-├── .gitignore             // indicates which folders and files Git should ignore
-├── index.js               // runs the application
-└── package.json           
-```
+# Screenshots
+
+![Tests](./assets/port_10-1_screenshot.png)
+
+![Sample](./assets/port_10-2_screenshot.png)
