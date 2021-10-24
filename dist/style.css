@@ -1,0 +1,49 @@
+tr {
+    background-color: white;
+}
+
+.manager::before {
+    content: "\f7b6";
+    display: inline-block;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 700;
+    font-style: normal;
+    font-variant: normal;
+    margin-right: 5px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.engineer::before {
+    content: "\f530";
+    display: inline-block;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    margin-right: 5px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.intern::before {
+    content: "\f501";
+    display: inline-block;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 700;
+    font-style: normal;
+    font-variant: normal;
+    margin-right: 5px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+#table {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background-color: ghostwhite;
+}
