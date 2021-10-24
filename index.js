@@ -139,7 +139,7 @@ function additionalTeamMember() {
 };
 
 function writeToFile (fileName, data) {
-    fs.writeFile(`./assets/${fileName}`, generateHtml(data), (err) => { 
+    fs.writeFile(`./output/${fileName}`, generateHtml(data), (err) => { 
         err ? console.error(err) : console.log("Generating HTML...")
     });
 };
