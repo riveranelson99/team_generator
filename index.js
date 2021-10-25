@@ -1,3 +1,11 @@
+/*
+Bring in fs for the purposes of generating the html file
+Bring in inquirer for the purposes of prompting the user with the questions that will be asked
+Bring in the sub classes for the purposes of constructing new instances of those classes based on user response
+Bring in the function defined in the page template for the purposes of feeding it the data that will be gathered from the user responses
+Establish an empty array where the entirety of the user responses will be stored for the purposes of manipulation later on
+*/
+
 const fs = require("fs");
 const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
@@ -13,6 +21,8 @@ let teamArr = [];
 * WHEN finishing the building of the team, THEN the application is exited, and the HTML is generated
 */
 
+// First function is to generate a new instance of a manager class and feed the responses of the user into an empty array
+// The last thing to be done is to initiate the choose additional employee function
 function managerGenerator() {
     inquirer
         .prompt([
@@ -47,6 +57,8 @@ function managerGenerator() {
         })
 };
 
+// First function is to generate a new instance of an engineer class and feed the responses of the user into an empty array
+// The last thing to be done is to initiate the choose additional employee function
 function engineerGenerator() {
     inquirer
         .prompt([
@@ -81,6 +93,8 @@ function engineerGenerator() {
         })
 };
 
+// First function is to generate a new instance of an intern class and feed the responses of the user into an empty array
+// The last thing to be done is to initiate the choose additional employee function
 function internGenerator() {
     inquirer
         .prompt([
@@ -116,6 +130,8 @@ function internGenerator() {
         })
 };
 
+// This function will allow the user to select if they desire additional engineer's or intern's infinitely if they so chose
+// When the user is satisfied with the amount of employees they wish to list, the last step of this function is to utilize the write file function feeding it the name of the html and what information it will hold
 function additionalTeamMember() {
     inquirer
         .prompt([
@@ -138,10 +154,13 @@ function additionalTeamMember() {
         });
 };
 
+// This function is to write the html file by utilizing the function defined in the page template
+// This is done by feeding it the data from the (at this point) non-empty array
 function writeToFile (fileName, data) {
     fs.writeFile(`./output/${fileName}`, generateHtml(data), (err) => { 
         err ? console.error(err) : console.log("Generating HTML...")
     });
 };
 
+// Initialize the prompts starting with the manager function
 managerGenerator();
