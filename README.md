@@ -1,5 +1,5 @@
 # Team Generator
-Developing a generator the creates employee team information.
+Developing a generator the creates employee team information based on user input and desire.
 
 # Pseudo Code
 

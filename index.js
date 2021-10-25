@@ -57,7 +57,7 @@ function managerGenerator() {
         })
 };
 
-// First function is to generate a new instance of an engineer class and feed the responses of the user into an empty array
+// Second function is to generate a new instance of an engineer class and feed the responses of the user into an empty array
 // The last thing to be done is to initiate the choose additional employee function
 function engineerGenerator() {
     inquirer
@@ -93,7 +93,7 @@ function engineerGenerator() {
         })
 };
 
-// First function is to generate a new instance of an intern class and feed the responses of the user into an empty array
+// Third function is to generate a new instance of an intern class and feed the responses of the user into an empty array
 // The last thing to be done is to initiate the choose additional employee function
 function internGenerator() {
     inquirer
@@ -130,7 +130,7 @@ function internGenerator() {
         })
 };
 
-// This function will allow the user to select if they desire additional engineer's or intern's infinitely if they so chose
+// Fourth function will allow the user to select if they desire additional engineer's or intern's infinitely if they so chose
 // When the user is satisfied with the amount of employees they wish to list, the last step of this function is to utilize the write file function feeding it the name of the html and what information it will hold
 function additionalTeamMember() {
     inquirer
@@ -154,7 +154,7 @@ function additionalTeamMember() {
         });
 };
 
-// This function is to write the html file by utilizing the function defined in the page template
+// Final function is to write the html file by utilizing the function defined in the page template
 // This is done by feeding it the data from the (at this point) non-empty array
 function writeToFile (fileName, data) {
     fs.writeFile(`./output/${fileName}`, generateHtml(data), (err) => { 
